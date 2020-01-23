@@ -229,3 +229,6 @@ Going through the 5 steps mentinoed below will help user to understand, install 
     to merge the different result files from the respective child-nodes.
     Example: 
     perl shivgami_p5_Merge.pl
+    
+    The completion of the above program will generate the merged xml result file:
+    "Final_result.xml"
