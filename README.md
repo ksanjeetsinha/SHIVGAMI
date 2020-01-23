@@ -1,5 +1,19 @@
-# SHIVGAMI
-SHIVGAMI is a tool, which run blastX process by assembling the CPU cores from avaialble Linux computing units.
+#                                        SHIVGAMI
+# Simplifying tHe titanIc blastx process using aVailable GAthering of coMputational unIts.
+
+Researchers who have small computational units, but not able to run blastx process,
+do not worry!
+
+Here we go with SHIVGAMI, which assemble the CPU powers from the available Linux machines and able to convert
+a small computer lab into a powerful grid to perform the blastx process !
+
+Communities with powerful resources, but with bulk-query load can also utilize SHIVGAMI to complete the blastx
+proecss using available small Linux machines.
+
+In a nutshell, SHIVGAMI is a time and cost savior tool for all users
+starting from commercial firm to a common man, utilises the
+"Little Drops of Water make a Mighty Ocean" concept
+without any requirement of paid software, hardware and man-power.
 
 Going through the 5 steps mentinoed below will help user to understand, install and run the SHIVGAMI !
 
