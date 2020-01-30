@@ -4,15 +4,14 @@
 Researchers who have small computational units, but not able to run blastx process,
 do not worry!
 
-Here we go with SHIVGAMI, which assemble the CPU powers from the available Linux machines and able to convert
+Here we come up with SHIVGAMI, which assemble the CPU-core powers from the available Linux machines and able to convert
 a small computer lab into a powerful grid to perform the blastx process !
 
 Communities with powerful resources, but with bulk-query load can also utilize SHIVGAMI to complete the blastx
 proecss using available small Linux machines.
 
-In a nutshell, SHIVGAMI is a time and cost savior tool for all users
-starting from commercial firm to a common man, utilises the
-"Little Drops of Water make a Mighty Ocean" concept
+In a nutshell, SHIVGAMI is a time and cost savior tool for all users starting from commercial firm to a common man,
+utilises the "Little Drops of Water make a Mighty Ocean" concept
 without any requirement of paid software, hardware and man-power.
 
 Going through the 5 steps mentinoed below will help user to understand, install and run the SHIVGAMI !
@@ -20,9 +19,10 @@ Going through the 5 steps mentinoed below will help user to understand, install 
 # 1. Gathering of Linux computational units
 
 	Collecting information for those computational units which are having Linux Operating Systems(OS).
-	User can collect all types of Linux Machines like Normal PCs, High-config PCs and Servers.
-	We have not tested SHIVGAMI on laptops, but user can include, if the laptop is in the connected network.
-	We have tested SHIVGAMI on Ubuntu and CentOS.
+	User can collect all types of Linux Machines like Normal PCs, High-end PCs and Servers.
+	We have not tested SHIVGAMI on laptops, but user can include, if the laptop is accessible via
+	Secure Shell (SSH) connection
+	We have tested SHIVGAMI on Ubuntu and CentOS systems.
   
 # 2. Preparation
 
@@ -70,7 +70,7 @@ Going through the 5 steps mentinoed below will help user to understand, install 
 		Debian/Ubuntu
 		sudo apt-get install openssh-server openssh-client
 
-		The installation can be verified using commands:
+		The installation can be verified on Ubuntu using commands:
 		sudo dpkg -l openssh-server
 		sudo dpkg -l openssh-client
 		
@@ -119,23 +119,23 @@ Going through the 5 steps mentinoed below will help user to understand, install 
 		The same can be seen in detail with makeblastdb help
 
 		If a user want to run blastx against NCBI-NR protein database,
-    it can be obtained from:
+    it can be obtained directly from:
 		ftp://ftp.ncbi.nlm.nih.gov/blast/db/ which is already formated.
 
 		A user must donwload all files with prefix "nr."
 		(Example: nr.00 to nr.142 as on 13-Jan-2020 3:43 IST)
 
-		(vii)Network connection
-		Network connection is required to run this software.
-    It means the Linux pc, which is going to be used to run blastx has to be in network connection.
-		
+		(vii)SSH connection
+		SSH connection is required to run this software.
+    It means the Linux pc, which is going to be used to run blastx has to be in SSH connection.
+    		
 	(II) Master node
 		A master node is a computational unit with Linux OS, which distributes the process amongst the child nodes.
 		Master node will not take part in the blastx process.
 		Master node can be a simple computer or a server or a high-end pc.
 		
 	(III) Child node system information
-		Child nodes are all computational units with Linux OS, except master node.
+		Child node can be a simple computer or a server or a high-end pc with Linux OS, except master node.
 
 		A text file "child_node_system_info.txt" (user can rename it, if required) creation
 		is required.
@@ -162,7 +162,7 @@ Going through the 5 steps mentinoed below will help user to understand, install 
 
 		(iii)IP Address
     Internet Protocol address.
-    It can be known using 'ifconfig' command
+    It can be identified by running 'ifconfig' command in Linux terminal.
 
 		(iv)Password
 		A password for the child node system
@@ -181,7 +181,7 @@ Going through the 5 steps mentinoed below will help user to understand, install 
 		Example: /home/lab2/test1/database
     
     The sample "child_node_system_info.txt" will look like:
-    ================================================================================================================
+    ===================================================================================================================
     NO	USER	IP	Password	process_PATH	blast_program_PATH	Database_PATH
     1	lab3	172.16.29.122	111	/home/lab3/Naman	/home/lab3/blast_2p9p0plus/bin/blastx	/home/lab3/nr
     2	lab11	172.16.29.123	222	/home/lab11/Naman	/home/lab11/blast_2p9p0plus/bin/blastx	/home/lab11/nr
@@ -189,11 +189,11 @@ Going through the 5 steps mentinoed below will help user to understand, install 
     4	lab15	172.16.29.125	444	/home/lab15/Naman	/home/lab15/blast_2p9p0plus/bin/blastx	/home/lab15/nr
     5	u_132	172.16.29.123	555	/home/u_132/Naman	/home/u_132/blast_2p9p0plus/bin/blastx	/home/u_132/nr
     6	lab6	172.16.29.35	666	/home/lab6/Naman	/home/lab6/blast_2p9p0plus/bin/blastx	/home/lab6/nr
-    ================================================================================================================
+    ===================================================================================================================
 
 # 3. Download SHIVGAMI
 
-    Download SHIVGAMI from either Github or www.shivgami.net
+    Download SHIVGAMI from either Github: https://github.com/namanneo007/SHIVGAMI or www.shivgami.net
     It contains 5 perl programs:
       shivgami_p1_Run.pl
       shivgami_p2_OneLine.pl
@@ -201,9 +201,10 @@ Going through the 5 steps mentinoed below will help user to understand, install 
       shivgami_p4_Status.pl
       shivgami_p5_Merge.pl
 
+
 # 4. Run SHIVGAMI
 
-		User must put all 5 programs of SHIVGAMI inside a directory from where the process will be initiated.
+	User must put all 5 programs of SHIVGAMI inside a Master-node directory from where the process will be initiated.
     
     Step-1
     Run the 1st perl program with 2 arguments: <input-fasta file> and <child-node-information>
