@@ -78,6 +78,7 @@ print "System_information\tPC\tXML\tTime\tDescription\n";
 print "================================================================================================================\n";
 
 $xml_desc_flag=0;$time_desc_flag=0;
+$warning_flag=0;
 
 open(F0,"phase5_mergeInfo.txt");
 while(<F0>)
@@ -144,6 +145,31 @@ while(<F0>)
 		}
 	}
 	print "XML_desc: ".$xml_desc."|Time_desc: ".$time_desc."\n";
+
+	if($flag_xml==1 || $flag_time==1)
+	{
+		$warning_flag=1;
+		if($flag_xml==1)
+		{
+			print "\n";
+			print "\tThe XML file is not generated yet:check the child-node\n";
+			next;
+		}
+		if($flag_time==1)
+		{
+			print "\n";
+			print "\tThe time file is not generated yet\n\tcheck the child-node\n";
+			next;
+		}
+		if($flag_xml==1 && $flag_time==1)
+		{
+			print "\n";
+			print "\tBoth the XML and time file is not generated\n\tIt may possible that process is running\n";
+			print "\tCheck the child-node\n";
+			next;
+		}
+	}
+
 }
 close F0;
 
@@ -173,6 +199,14 @@ if($xml_desc_flag==1 && $time_desc_flag==1)
 	exit 0;
 }
 
+if($warning_flag==1)
+{
+	print "\n\n";
+	print "\t1 or More XML/time files are not generated\n";
+	print "\tPlease check the issue\n";
+	print "\txxxxxxxxx	Process Incompleted	xxxxxxxxxx\n";
+	exit 0;
+}
 
 
 $cnt1=`ls|grep xml\$|grep outfile|wc -l`;
@@ -232,9 +266,7 @@ if($flag1==1)
 	$m1=int($left1/60);
 	$s1=int($left1 % 60);
 	print "Overall Maximum time span by pc-".$pc_max." = ".$h1." Hour ".$m1." min ".$s1." sec\n";
-	print "PROGRAM-4 COMPLETED !\n";
 }
-
 
 
 
